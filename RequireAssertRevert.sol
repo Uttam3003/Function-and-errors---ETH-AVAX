@@ -17,8 +17,21 @@ contract SafeMathDivision {
     function usingRevert(uint256 num) public pure returns (uint256) {
         // Using revert to revert state changes and provide a custom error message
         if (num == 88) {
-            revert(" 88 is not allowed");
+            revert("88 is not allowed");
         }
         return num - 1;
+    }
+
+    function intentionallyTriggerErrors() public pure {
+        // Function to intentionally trigger the error handlers
+
+        // Trigger the require error by passing 0
+        usingRequire(0);
+
+        // Trigger the assert error by passing 0
+        usingAssert(0);
+
+        // Trigger the revert error by passing 88
+        usingRevert(88);
     }
 }
